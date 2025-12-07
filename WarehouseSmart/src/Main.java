@@ -8,6 +8,7 @@ public class Main {
         LinkedListBarang list = new LinkedListBarang();
         QueueBarang queue = new QueueBarang();
         TreeKategori tree = new TreeKategori();
+        StackBarang stack = new StackBarang();
 
         int pilih;
 
@@ -19,6 +20,7 @@ public class Main {
             System.out.println("2. Lihat Daftar Barang");
             System.out.println("3. Lihat Antrian Barang");
             System.out.println("4. Tampilkan Tree Kategori");
+            System.out.println("5. Lihat Isi Rak");
             System.out.println("0. Keluar");
             System.out.println("===============================");
             System.out.print("Pilih menu : ");
@@ -43,6 +45,7 @@ public class Main {
                     System.out.print("Berat Barang   : ");
                     int berat = sc.nextInt(); 
                     sc.nextLine();
+                    
 
                     // Membuat node baru
                     NodeBarang barang = new NodeBarang(id, nama, kategori, penitip, tgl, berat);
@@ -55,6 +58,8 @@ public class Main {
 
                     // Tambahkan ke Tree BST
                     tree.tambahKategori(barang);
+
+                    stack.push(barang);
 
                     System.out.println("✔ Barang berhasil diinput!");
                     break;
@@ -72,6 +77,12 @@ public class Main {
                     System.out.println("\n=== TREE KATEGORI (INORDER) ===");
                     tree.inorder(tree.root);
                     break;
+
+                case 5:
+                    System.out.println("\n=== ISI RAK (STACK) ===");
+                    stack.tampilStack();
+                    break;
+
 
                 case 0:
                     System.out.println("Keluar...");
