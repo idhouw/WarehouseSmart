@@ -1,43 +1,48 @@
 public class StackBarang {
 
-    private NodeBarang top;
-    private int size = 0;
+    private class ElemenStack {
+        NodeBarang data;
+        ElemenStack next;
 
-    public void push(NodeBarang barang) {
-        if (barang == null) return;
-
-        barang.next = top;
-        top = barang;
-        size++;
-
-        System.out.println("Barang ditumpuk ke rak");
+        ElemenStack(NodeBarang data) {
+            this.data = data;
+            this.next = null;
+        }
     }
 
+    private ElemenStack top;
 
-    public NodeBarang peek() {
-        return top;
+    public void push(NodeBarang barang) {
+        ElemenStack baru = new ElemenStack(barang);
+        baru.next = top;
+        top = baru;
     }
 
     public void tampilStack() {
+        System.out.println("\n=== [3] ISI RAK TRANSIT (STACK - LIFO) ===");
         if (top == null) {
-            System.out.println("Rak masih kosong.");
+            System.out.println(" [ Rak Kosong ] ");
             return;
         }
 
-        System.out.println("\n=== DATA RAK BARANG ==");
+        System.out.println("       [ BAGIAN ATAS RAK ]");
+        System.out.println("+-------+--------------------------+");
+        System.out.println("| ID    | NAMA BARANG              |");
+        System.out.println("+-------+--------------------------+");
 
-        NodeBarang temp = top;
+        ElemenStack temp = top;
         while (temp != null) {
-            System.out.println("- " + temp.idBarang + " | " + temp.namaBarang + " | " + temp.Kategori);
+            System.out.printf("| %-5s | %-24s |\n", 
+                    temp.data.idBarang, 
+                    potongNama(temp.data.namaBarang, 24));
             temp = temp.next;
         }
+        System.out.println("+-------+--------------------------+");
+        System.out.println("       [ BAGIAN BAWAH RAK ]");
     }
 
-    public boolean isEmpty() {
-        return top == null;
-    }
-
-    public int size() {
-        return size;
+    private String potongNama(String nama, int max) {
+        if (nama.length() > max) return nama.substring(0, max - 3) + "...";
+        return nama;
     }
 }

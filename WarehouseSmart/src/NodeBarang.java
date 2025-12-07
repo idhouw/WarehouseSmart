@@ -5,9 +5,8 @@ public class NodeBarang {
     String NamaPenitip;
     String tglTitip;
     int berat;
-    NodeBarang next;   // untuk LinkedList
-    NodeBarang left;   // untuk Tree (BST)
-    NodeBarang right;  // untuk Tree (BST)
+    
+    NodeBarang next; // Pointer untuk Linked List
 
     public NodeBarang(String idBarang, String namaBarang, String Kategori, String NamaPenitip, String tglTitip, int berat) {
         this.idBarang = idBarang;
@@ -17,8 +16,5 @@ public class NodeBarang {
         this.tglTitip = tglTitip;
         this.berat = berat;
         this.next = null;
-        this.left = null;
-        this.right = null;
     }
 }
-

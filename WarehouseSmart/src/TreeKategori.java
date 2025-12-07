@@ -1,67 +1,100 @@
 public class TreeKategori {
-    NodeBarang root;
 
-    // Insert node ke BST berdasarkan kategori
-    public NodeBarang insert(NodeBarang root, NodeBarang baru) {
-        if (root == null) return baru;
+    private class NodeLemari {
+        String namaKategori;
+        int totalBerat;
+        NodeBarang headRak; 
+        NodeLemari left, right;
 
-        if (baru.Kategori.compareToIgnoreCase(root.Kategori) < 0) {
-            root.left = insert(root.left, baru);
+        NodeLemari(String kategori) {
+            this.namaKategori = kategori;
+            this.totalBerat = 0;
+            this.headRak = null;
+            this.left = null;
+            this.right = null;
+        }
+    }
+
+    private NodeLemari root;
+
+    public void simpanKeGudang(NodeBarang barangAsli) {
+        NodeBarang salinan = new NodeBarang(
+            barangAsli.idBarang, barangAsli.namaBarang, barangAsli.Kategori,
+            barangAsli.NamaPenitip, barangAsli.tglTitip, barangAsli.berat
+        );
+        root = insertRecursive(root, salinan);
+    }
+
+    private NodeLemari insertRecursive(NodeLemari currentLemari, NodeBarang barang) {
+        if (currentLemari == null) {
+            NodeLemari baru = new NodeLemari(barang.Kategori);
+            masukkanKeRak(baru, barang);
+            return baru;
+        }
+        if (barang.Kategori.equalsIgnoreCase(currentLemari.namaKategori)) {
+            masukkanKeRak(currentLemari, barang);
+            return currentLemari;
+        }
+        if (barang.Kategori.compareToIgnoreCase(currentLemari.namaKategori) < 0) {
+            currentLemari.left = insertRecursive(currentLemari.left, barang);
         } else {
-            root.right = insert(root.right, baru);
+            currentLemari.right = insertRecursive(currentLemari.right, barang);
         }
-        return root;
+        return currentLemari;
     }
 
-    // Tambah kategori beserta data barangnya
-    public void tambahKategori(NodeBarang barang) {
-        root = insert(root, barang);
-        System.out.println("Barang ditambahkan ke Tree kategori.");
-    }
-
-    // INORDER = A-Z
-    public void inorder(NodeBarang root) {
-        if (root != null) {
-            inorder(root.left);
-            System.out.println(root.Kategori + " | " + root.namaBarang + " | " + root.idBarang);
-            inorder(root.right);
-        }
-    }
-
-    // PREORDER
-    public void preorder(NodeBarang root) {
-        if (root != null) {
-            System.out.println(root.Kategori + " | " + root.namaBarang);
-            preorder(root.left);
-            preorder(root.right);
-        }
-    }
-
-    // POSTORDER
-    public void postorder(NodeBarang root) {
-        if (root != null) {
-            postorder(root.left);
-            postorder(root.right);
-            System.out.println(root.Kategori + " | " + root.namaBarang);
-        }
-    }
-
-    // Searching berdasarkan kategori
-    public NodeBarang searchKategori(String Kategori) {
-        NodeBarang temp = root;
-
-        while (temp != null) {
-            if (Kategori.equalsIgnoreCase(temp.Kategori)) {
-                return temp;
-            } 
-            else if (Kategori.compareToIgnoreCase(temp.Kategori) < 0) {
-                temp = temp.left;
-            } 
-            else {
-                temp = temp.right;
+    private void masukkanKeRak(NodeLemari lemari, NodeBarang barang) {
+        lemari.totalBerat += barang.berat;
+        if (lemari.headRak == null) {
+            lemari.headRak = barang;
+        } else {
+            NodeBarang temp = lemari.headRak;
+            while (temp.next != null) {
+                temp = temp.next;
             }
+            temp.next = barang;
         }
-        return null;
+    }
+
+    public void lihatIsiGudang() {
+        System.out.println("\n=== [4] DENAH GUDANG & ISI LEMARI (TREE STRUCTURE) ===");
+        if (root == null) {
+            System.out.println("Gudang Kosong.");
+            return;
+        }
+        inorderView(root);
+    }
+
+    private void inorderView(NodeLemari lemari) {
+        if (lemari != null) {
+            inorderView(lemari.left);
+
+            // TAMPILAN LEMARI (Header)
+            System.out.println("\n  /==============================================\\");
+            System.out.printf("  | LEMARI: %-20s (Total: %4d kg) |\n", 
+                    lemari.namaKategori.toUpperCase(), lemari.totalBerat);
+            System.out.println("  \\==============================================/");
+            
+            // TAMPILAN ISI RAK (Tabel dalam Lemari)
+            System.out.println("      | ID    | Nama Barang              | Berat |");
+            System.out.println("      |-------|--------------------------|-------|");
+
+            NodeBarang b = lemari.headRak;
+            while (b != null) {
+                System.out.printf("      | %-5s | %-24s | %3d kg |\n", 
+                        b.idBarang, 
+                        potongNama(b.namaBarang, 24), 
+                        b.berat);
+                b = b.next;
+            }
+            System.out.println("      +------------------------------------------+");
+
+            inorderView(lemari.right);
+        }
+    }
+
+    private String potongNama(String nama, int max) {
+        if (nama.length() > max) return nama.substring(0, max - 3) + "...";
+        return nama;
     }
 }
-
