@@ -10,22 +10,9 @@ public class StackBarang {
         top = barang;
         size++;
 
-        System.out.println("Barang ditumpuk ke rak (STACK)!");
+        System.out.println("Barang ditumpuk ke rak");
     }
 
-    public NodeBarang pop() {
-        if (top == null) {
-            System.out.println("Rak kosong, tidak ada barang yang bisa diambil.");
-            return null;
-        }
-
-        NodeBarang ambil = top;
-        top = top.next;
-        ambil.next = null;
-        size--;
-
-        return ambil;
-    }
 
     public NodeBarang peek() {
         return top;
@@ -37,7 +24,7 @@ public class StackBarang {
             return;
         }
 
-        System.out.println("\n=== DATA RAK BARANG (STACK) ===");
+        System.out.println("\n=== DATA RAK BARANG ==");
 
         NodeBarang temp = top;
         while (temp != null) {
