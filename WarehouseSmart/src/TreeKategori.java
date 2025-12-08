@@ -70,24 +70,24 @@ public class TreeKategori {
             inorderView(lemari.left);
 
             // TAMPILAN LEMARI (Header)
-            System.out.println("\n  /==============================================\\");
-            System.out.printf("  | LEMARI: %-20s (Total: %4d kg) |\n", 
+            System.out.println("\n=================================================");
+            System.out.printf("| LEMARI: %-20s (Total: %4d kg) |\n", 
                     lemari.namaKategori.toUpperCase(), lemari.totalBerat);
-            System.out.println("  \\==============================================/");
+            System.out.println("=================================================");
             
             // TAMPILAN ISI RAK (Tabel dalam Lemari)
-            System.out.println("      | ID    | Nama Barang              | Berat |");
-            System.out.println("      |-------|--------------------------|-------|");
+            System.out.println("| ID    | Nama Barang              | Berat      |");
+            System.out.println("|-------|--------------------------|------------|");
 
             NodeBarang b = lemari.headRak;
             while (b != null) {
-                System.out.printf("      | %-5s | %-24s | %3d kg |\n", 
+                System.out.printf("| %-5s | %-24s | %7.2f kg |\n", 
                         b.idBarang, 
                         potongNama(b.namaBarang, 24), 
                         b.berat);
                 b = b.next;
             }
-            System.out.println("      +------------------------------------------+");
+            System.out.println("+-----------------------------------------------+");
 
             inorderView(lemari.right);
         }

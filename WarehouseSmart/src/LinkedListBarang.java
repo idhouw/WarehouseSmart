@@ -2,7 +2,7 @@ public class LinkedListBarang {
     NodeBarang head;
 
     public void tambahBarang(String idBarang, String namaBarang, String kategori,
-                             String namaPenitip, String tglTitip, int berat) {
+                             String namaPenitip, String tglTitip, Double berat) {
 
         NodeBarang baru = new NodeBarang(idBarang, namaBarang, kategori, namaPenitip, tglTitip, berat);
 
@@ -25,15 +25,15 @@ public class LinkedListBarang {
 
         System.out.println("\n=== [1] DAFTAR LENGKAP SEMUA BARANG (LINKED LIST) ===");
         // Header Tabel
-        System.out.println("+-------+--------------------------+----------------------+-------------+--------+");
-        System.out.printf("| %-5s | %-24s | %-20s | %-11s | %-6s |\n", 
+        System.out.println("+-------+--------------------------+----------------------+-------------+------------+");
+        System.out.printf("| %-5s | %-24s | %-20s | %-11s | %-10s |\n", 
                 "ID", "NAMA BARANG", "KATEGORI", "TGL TITIP", "BERAT");
-        System.out.println("+-------+--------------------------+----------------------+-------------+--------+");
+        System.out.println("+-------+--------------------------+----------------------+-------------+------------+");
 
         NodeBarang temp = head;
         while (temp != null) {
             // Isi Tabel dengan format rapi
-            System.out.printf("| %-5s | %-24s | %-20s | %-11s | %3d kg |\n", 
+            System.out.printf("| %-5s | %-24s | %-20s | %-11s | %7.2f kg |\n", 
                     temp.idBarang, 
                     potongNama(temp.namaBarang, 24), // Biar tidak merusak tabel kalau nama kepanjangan
                     temp.Kategori, 
@@ -41,7 +41,7 @@ public class LinkedListBarang {
                     temp.berat);
             temp = temp.next;
         }
-        System.out.println("+-------+--------------------------+----------------------+-------------+--------+");
+        System.out.println("+-------+--------------------------+----------------------+-------------+------------+");
     }
 
     // Helper: Memotong string jika terlalu panjang agar tabel tidak berantakan

@@ -4,11 +4,10 @@ public class NodeBarang {
     String Kategori;
     String NamaPenitip;
     String tglTitip;
-    int berat;
+    Double berat;
     
-    NodeBarang next; // Pointer untuk Linked List
-
-    public NodeBarang(String idBarang, String namaBarang, String Kategori, String NamaPenitip, String tglTitip, int berat) {
+    NodeBarang next; 
+    public NodeBarang(String idBarang, String namaBarang, String Kategori, String NamaPenitip, String tglTitip, Double berat) {
         this.idBarang = idBarang;
         this.namaBarang = namaBarang;
         this.Kategori = Kategori;
