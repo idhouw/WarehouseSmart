@@ -12,8 +12,7 @@ public class QueueBarang {
 
     private ElemenQueue front;
     private ElemenQueue rear;
-    private int size;
-
+    
     public void enqueue(NodeBarang barang) {
         ElemenQueue baru = new ElemenQueue(barang);
         if (front == null) {
@@ -23,11 +22,10 @@ public class QueueBarang {
             rear.next = baru;
             rear = baru;
         }
-        size++;
     }
 
     public void tampilAntrian() {
-        System.out.println("\n=== [2] MONITORING ANTRIAN MASUK (FIFO) ===");
+        System.out.println("\n=== [2] MONITORING ANTRIAN MASUK ===");
         if (front == null) {
             System.out.println(" [ Antrian Kosong ] ");
             return;

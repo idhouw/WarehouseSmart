@@ -29,7 +29,7 @@ public class ManajemenData {
             lptr = ptr1;
         } while (swapped);
 
-        System.out.println("\n[SUKSES] Data telah diurutkan berdasarkan BERAT (Termuda -> Terberat).");
+        System.out.println("\n[SUKSES] Data telah diurutkan berdasarkan BERAT (Terkecil ke Terbesar).");
         list.tampilBarang(); // Tampilkan ulang tabel yang sudah urut
     }
 

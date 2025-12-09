@@ -19,7 +19,7 @@ public class StackBarang {
     }
 
     public void tampilStack() {
-        System.out.println("\n=== [3] ISI RAK TRANSIT (STACK - LIFO) ===");
+        System.out.println("\n   === [3] ISI RAK TRANSIT ===");
         if (top == null) {
             System.out.println(" [ Rak Kosong ] ");
             return;

@@ -57,7 +57,7 @@ public class TreeKategori {
     }
 
     public void lihatIsiGudang() {
-        System.out.println("\n=== [4] DENAH GUDANG & ISI LEMARI (TREE STRUCTURE) ===");
+        System.out.println("\n=== [4] DENAH GUDANG & ISI LEMARI ===");
         if (root == null) {
             System.out.println("Gudang Kosong.");
             return;
@@ -70,7 +70,7 @@ public class TreeKategori {
             inorderView(lemari.left);
 
             // TAMPILAN LEMARI (Header)
-            System.out.println("\n=================================================");
+            System.out.println("=================================================");
             System.out.printf("| LEMARI: %-20s (Total: %4d kg) |\n", 
                     lemari.namaKategori.toUpperCase(), lemari.totalBerat);
             System.out.println("=================================================");

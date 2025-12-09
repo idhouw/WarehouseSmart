@@ -23,7 +23,7 @@ public class LinkedListBarang {
             return;
         }
 
-        System.out.println("\n=== [1] DAFTAR LENGKAP SEMUA BARANG (LINKED LIST) ===");
+        System.out.println("\n=== [1] DAFTAR LENGKAP SEMUA BARANG ===");
         // Header Tabel
         System.out.println("+-------+--------------------------+----------------------+-------------+------------+");
         System.out.printf("| %-5s | %-24s | %-20s | %-11s | %-10s |\n", 

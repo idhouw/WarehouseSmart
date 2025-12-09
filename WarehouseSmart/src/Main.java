@@ -8,10 +8,9 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("==========================================");
-        System.out.println("   SISTEM LOGISTIK GUDANG SKALA BESAR");
+        System.out.println("   SISTEM LOGISTIK WAREHOUSES SMART");
         System.out.println("==========================================");
-        System.out.println("Memulai proses loading data massal...\n");
-
+        
         // --- DATA INPUT MASSAL (30+ DATA) ---
 
         // 1. KATEGORI: ELEKTRONIK (Huruf E - Kemungkinan Root)
@@ -64,7 +63,6 @@ public class Main {
         // 9. KATEGORI: Z_LAINLAIN (Huruf Z - Paling Kanan)
         inputOtomatis("ZZ01", "Barang Antik Guci", "Z_LainLain", "Ernest Prakasa", "15-Des", 8.6);
         inputOtomatis("ZZ02", "Patung Hiasan Tembaga", "Z_LainLain", "Farah Quinn", "15-Des", 25.4);
-        System.out.println("\nSELESAI! Total 30+ Barang telah diproses.");
 
         // --- MENAMPILKAN OUTPUT ---
 
@@ -88,6 +86,8 @@ public class Main {
         admin.cariData(list, "BY03");
         // Mencari Nama Penitip "Raffi" (akan muncul barang punya Raffi Ahmad)
         admin.cariData(list, "Raffi");
+
+        admin.cariData(list, "Tutu");
 
         // B. TEST SORTING
         System.out.println("\n--- MENGURUTKAN DATA (SORTING) ---");
