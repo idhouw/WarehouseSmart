@@ -69,13 +69,11 @@ public class TreeKategori {
         if (lemari != null) {
             inorderView(lemari.left);
 
-            // TAMPILAN LEMARI (Header)
             System.out.println("=================================================");
             System.out.printf("| LEMARI: %-20s (Total: %4d kg) |\n", 
                     lemari.namaKategori.toUpperCase(), lemari.totalBerat);
             System.out.println("=================================================");
             
-            // TAMPILAN ISI RAK (Tabel dalam Lemari)
             System.out.println("| ID    | Nama Barang              | Berat      |");
             System.out.println("|-------|--------------------------|------------|");
 

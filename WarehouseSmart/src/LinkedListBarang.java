@@ -24,7 +24,6 @@ public class LinkedListBarang {
         }
 
         System.out.println("\n=== [1] DAFTAR LENGKAP SEMUA BARANG ===");
-        // Header Tabel
         System.out.println("+-------+--------------------------+----------------------+-------------+------------+");
         System.out.printf("| %-5s | %-24s | %-20s | %-11s | %-10s |\n", 
                 "ID", "NAMA BARANG", "KATEGORI", "TGL TITIP", "BERAT");
@@ -32,10 +31,9 @@ public class LinkedListBarang {
 
         NodeBarang temp = head;
         while (temp != null) {
-            // Isi Tabel dengan format rapi
             System.out.printf("| %-5s | %-24s | %-20s | %-11s | %7.2f kg |\n", 
                     temp.idBarang, 
-                    potongNama(temp.namaBarang, 24), // Biar tidak merusak tabel kalau nama kepanjangan
+                    potongNama(temp.namaBarang, 24),
                     temp.Kategori, 
                     temp.tglTitip, 
                     temp.berat);
@@ -44,7 +42,6 @@ public class LinkedListBarang {
         System.out.println("+-------+--------------------------+----------------------+-------------+------------+");
     }
 
-    // Helper: Memotong string jika terlalu panjang agar tabel tidak berantakan
     private String potongNama(String nama, int max) {
         if (nama.length() > max) {
             return nama.substring(0, max - 3) + "...";
