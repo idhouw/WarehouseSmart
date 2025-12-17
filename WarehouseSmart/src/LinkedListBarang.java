@@ -17,6 +17,35 @@ public class LinkedListBarang {
         }
     }
 
+    public void hapusBarang(String idBarang) {
+        if (head == null) {
+            System.out.println("Data kosong, tidak ada barang yang dihapus.");
+            return;
+        }
+
+        System.out.println("\n==============================================");
+        System.out.println("        MENGAPUS BARANG DARI SISTEM");
+        System.out.println("==============================================");
+        
+        if (head.idBarang.equalsIgnoreCase(idBarang)) {
+            head = head.next;
+            System.out.println("Barang dengan ID " + idBarang + " berhasil dihapus.");
+            return;
+        }
+
+        NodeBarang temp = head;
+        while (temp.next != null && !temp.next.idBarang.equalsIgnoreCase(idBarang)) {
+            temp = temp.next;
+        }
+
+        if (temp.next != null) {
+            temp.next = temp.next.next;
+            System.out.println("Barang dengan ID " + idBarang + " berhasil dihapus.");
+        } else {
+            System.out.println("Barang dengan ID " + idBarang + " tidak ditemukan.");
+        }
+    }
+
     public void tampilBarang() {
         if (head == null) {
             System.out.println("Data kosong.");

@@ -66,6 +66,11 @@ public class Main {
 
         stack.tampilStack();
 
+        list.hapusBarang("EL02");
+        list.hapusBarang("KS03");
+
+        list.tampilBarang();
+
         gudang.lihatIsiGudang();
 
         ManajemenData admin = new ManajemenData();
